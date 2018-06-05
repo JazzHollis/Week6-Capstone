@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Task";
+}
+
+<h2>Task</h2>
+
+<form action="/Home/NewTask" method="post">
+    User ID <input type="text" name="UserName" /><br /><br />
+    Task Description <input type="text" name="Description" /><br /><br />
+    Due Date <input type="date" name="DueDate" /><br /><br />
+
+    Task Status<br />
+    Incomplete <input type="radio" name="Status" id="Incomplete" value="Incomplete" checked>
+    Complete <input type="radio" name="Status" id="Complete" value="Complete"><br /><br />
+
+
+    <input type="submit" name="AddTask" />
+   
+    
+</form>
