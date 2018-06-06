@@ -128,7 +128,41 @@ namespace Week6_Capstone.Controllers
             }
         }
 
+        public ActionResult ChangeStatus(string TaskNumber)
+        {
 
-}
+            TaskListDBEntities ORM = new TaskListDBEntities();
 
-}
+            Task Found = ORM.Tasks.Find(TaskNumber);
+
+
+            if (Found != null)
+            {
+                if (Found.Status == "Incomplete")
+                {
+                    Found.Status = "Completed";
+                }
+                else
+                {
+                    Found.Status = "Incomplete";
+                }
+
+
+                ORM.Entry(Found).State = System.Data.Entity.EntityState.Modified;
+
+                
+                ORM.SaveChanges();
+
+                return RedirectToAction("Welcome");
+
+            }
+            else
+            {
+                ViewBag.Error.Message = "Task not found";
+                return View("Error");
+            }
+        }
+
+        }
+
+    }
